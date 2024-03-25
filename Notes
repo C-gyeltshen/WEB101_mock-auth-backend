@@ -1,0 +1,11 @@
+        window.onload = function () {
+            var pickMe = document.getElementById("ok")
+
+            console.log(pickMe)
+            var exercise1 = document.getElementsByClassName("exercise");
+            console.log(exercise1);
+            pickMe.innerHTML = "I GOT CHANGED"
+            for ( let i = 0; i < exercise1.length ; i++) {
+                exercise1[i].innerHTML = "my pokedex"
+            }
+        }

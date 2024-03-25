@@ -1,0 +1,32 @@
+* event handler
+
+"window.onlode"  an event handler that executes a script once the entire page 
+(including all its resources such as images, CSS files, etc.) has loaded.
+
+code :
+
+window.onload = function() {
+    // Code to execute after the page has fully loaded
+    console.log("Page loaded!");
+};
+
+example :
+
+<script>
+    // run this function when the document is loaded
+    window.onload = function(){
+      // create a couple of elements in an otherwise empty HTML page
+      const heading = document.createElement("h1");
+      const headingText = document.createTextNode("Big Head!");
+      heading.appendChild(headingText);
+      document.body.appendChild(heading);
+    };
+  </script>
+
+
+# this event handler creates a variable "heading" which will create a new element h1 using
+ the createElement("h1")
+
+# "headingText = document.createTextNode("Big Head!")" creates a text "BIg Head"using the createTextNode
+
+# ".appendChild(heading)" this will append the textNode to the heading as a child of <h1> element

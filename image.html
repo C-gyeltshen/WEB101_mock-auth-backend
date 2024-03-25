@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML BASICS</title>
+    <script>
+      async function getPokemon(pokemon) {
+        const response = await fetch(
+          `https://pokeapi.co/api/v2/pokemon/${pokemon}`
+        );
+        const data = await response.json();
+        console.log(data);
+
+        // Update the page with the Pokemon's name and description
+        document.getElementById("name").innerHTML = data.name;
+        document.getElementById("weight").innerHTML = data.weight;
+        document.getElementById("image").src = data.sprites.front_default;
+        document.getElementById("imageShiny").src = data.sprites.front_shiny;
+      
+        // Assuming you want to display the species name as description
+      }
+    </script>
+  </head>
+  <body>
+    <h1>My Pokedex</h1>
+    <form>
+      <label for="pokemon">Enter Pokemon Name</label>
+      <input type="text" id="pokemon" />
+      <button
+        type="button"
+        onclick="getPokemon(document.getElementById('pokemon').value)"
+      >
+        Search
+      </button>
+    </form>
+    <h5>Name</h5>
+    <p id="name">NAME OF POKEMON FOUND</p>
+    <h5>Weight</h5>
+    <p id="weight">WEIGHT OF POKEMON</p>
+    <h5>Default</h5>
+    <img id="image" src="" alt="pokemon" />
+    <h5>Shiny</h5>
+    <img id="imageShiny" src="" alt="pokemon" />
+  </body>
+</html>

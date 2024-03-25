@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+</head>
+
+<body>
+    <form>
+        <label for="fname">Identefier:</label>
+        <input type="email" id="email" name="fname"><br><br>
+
+        <label for="lname">password:</label>
+        <input type="text" id="name" name="lname"><br><br>
+
+        <input type="submit" id = "submit" value="Submit">
+    </form>
+    <!-- type = "submit" will send the automatic request to post the data-->
+      <script>
+
+        // getting all the id values using the "getElementById"
+        const name = document.getElementById("name")
+        const email = document.getElementById("email")
+        const submit = document.getElementById("submit")
+
+// when we click the submit we need to add a listner that will listen to our click
+
+        submit.addEventListener('click', function() {
+
+ //  creating a variable that takes in the id = "email" value (using .value)
+        const email_value = email.value
+        console.log(email_value);
+
+// creating a variable that will take in the id = "name" value (using .value)
+        const name_value = name.value
+        console.log(name_value)
+
+// creating a variable data that will take in a json object of that two input that we hve given in the index.html
+        const data = {
+            identifier : email_value,
+            password : name_value
+        }
+
+// is done so that the input that we have provided is not automatically asking request, instead we want to create a javascrept resspond  post request
+        event.preventDefault();
+
+// we are making a request to the server with endpoint "http://127.0.0.1:8085/auth" to post a data 
+        const response = fetch("http://127.0.0.1:8085/auth", {
+        method: "Post", // or 'PUT'
+        headers: {
+        "Content-Type": "application/json",
+    },
+        body: JSON.stringify(data),
+
+// after the request is send the respond will be receiver and we need to convert the respond into json
+    }).then((respond) =>{
+        return respond.json();
+
+// print out the respond(data), token of that respond
+    }).then((data) => {
+        console.log('Data that server gives after the request', data)
+        console.log('token for that user',data.token)
+        console.log('save token to the browser local storage')
+
+// we are using the localstorage from application to store the token using keyvalue
+// key = token , value = token value 
+        localStorage.setItem('token',data.token)
+
+// if the identifier and password value is same as that of data in the server then we will be directed to the protected page 
+        window.location.href = './protected.html';
+    }).catch((error) => {
+        console.log('error',error)
+    })
+
+    });
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML BASICS</title>
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    <script>
+      async function getPokemon(pokemon) {
+        // PASSING THE POKEMON NAME FROM FUNCTION PARAM TO THE FETCH API TO GET DATA FROM INTERNET
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+        //GET DATA FROM INTERNET AND FORMATTING IT INTO JSON
+        const data = await response.json();
+        console.log(data);
+        // PRINTING MY RESPONSE FROM THE URL (FETCH) TO CONFIRM I AM RECEIVING MY DATA
+        return data;
+      }
+      // RUN FUCNTION TO GET DATA OF POKEMON
+      // getPokemon("ditto")
+      window.onload = function () {
+        
+       
+        getPokemon("mew").then((response) => {
+          const responsePokemonName = response["name"];
+          console.log(responsePokemonName);
+
+          const responsePokemonWeigth = response["weight"];
+          console.log(responsePokemonWeigth);
+
+            document.getElementById("name").innerHTML = responsePokemonName
+            document.getElementById("weight").innerHTML = responsePokemonWeigth
+
+          const heading = document.createElement("h1");
+          const textNode = document.createTextNode("Poke Dex");
+          heading.appendChild(textNode);
+          document.body.appendChild(heading);
+
+          const dis = document.createElement("h3");
+          const textNode1 = document.createTextNode("This is a Poke Dex");
+          dis.appendChild(textNode1)
+          document.body.appendChild(dis)
+
+          const paragraph = document.createElement("p")
+          const content = document.createElement("Enter the name of the pokemon you ant to brows")
+          paragraph.appendChild(content)
+          document.body.appendChild(paragraph)
+
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <h1>My Pokedex</h1>
+    <form>
+      <label for="pokemon">Enter Pokemon Name</label>
+      <input type="text" id="pokemon" />
+      <button type="button" onclick="getPokemon(document.getElementById('pokemon').value)">Search</button>
+    </form>
+    <p id="name">NAME OF POKEMON FOUND</p>
+    <p id="weight">DESCRIPTION OF POKEMON</p>
+  </body>
+</html>
+apps-fileview.texmex_20240229.01_p0
+index.html
+Displaying index.html.

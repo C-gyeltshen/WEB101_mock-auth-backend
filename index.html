@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+//  DEFINING A FUNCTION THAT WILL FETCH DATAS FROM THE SERVER 
+        async function getPokemon(p){
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${p}`);
+            const pokemon = await response.json();
+            console.log(pokemon["name"]);
+            return pokemon
+
+        }
+        // Calling the function to get fetch the information of pokwmon ditto 
+        // getPokemon("ditto")
+
+
+
+// window.onlode with a function will lode all the fetched data on the web site 
+        window.onload = function () {
+        getPokemon("mew").then((response) => {
+          const responsePokemonName = response["name"];
+          console.log(responsePokemonName);
+
+          // DATA FLOW I AM PASSING IN A POKEMON A NAME TO MY FUNCTION
+
+          var pokemonName = document.getElementById("name");
+          pokemonName.innerHTML = responsePokemonName;
+        });
+      };
+
+    </script>
+</head>
+<body>
+    <div>
+        <h1>HTML BASICS </h1>
+        <p class="exercise">Html is a standard markdown language that is used to create a web site.</p>
+        <p id = "ok">DOM selector uses a WEB API</p>
+
+        <li class="exercise">getElementByID()</li>
+        <li class="exercise">getElementByTagName()</li>
+        <li class="exercise">getElementByClassName()</li>
+
+    </div>
+    
+</body>
+</html>
