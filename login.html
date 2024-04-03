@@ -23,16 +23,12 @@
         const name = document.getElementById("name")
         const email = document.getElementById("email")
         const submit = document.getElementById("submit")
-
-// when we click the submit we need to add a listner that will listen to our click
-
+        // when we click the submit we need to add a listner that will listen to our click
         submit.addEventListener('click', function() {
-
- //  creating a variable that takes in the id = "email" value (using .value)
+         //  creating a variable that takes in the id = "email" value (using .value)
         const email_value = email.value
         console.log(email_value);
-
-// creating a variable that will take in the id = "name" value (using .value)
+        // creating a variable that will take in the id = "name" value (using .value)
         const name_value = name.value
         console.log(name_value)
 
@@ -53,11 +49,11 @@
     },
         body: JSON.stringify(data),
 
-// after the request is send the respond will be receiver and we need to convert the respond into json
+        // after the request is send the respond will be receiver and we need to convert the respond into json
     }).then((respond) =>{
         return respond.json();
 
-// print out the respond(data), token of that respond
+    // print out the respond(data), token of that respond
     }).then((data) => {
         console.log('Data that server gives after the request', data)
         console.log('token for that user',data.token)
