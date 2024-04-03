@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+</head>
+<body>
+    <h1 id="h1class" >DOM Manipulation</h1>
+    <form >
+        <!-- <label for="fname"> Dish Name :</label>
+        <input type="text" id="dname" name="fname"><br><br>
+        <label for="lname"> Drink Order :</label>
+        <input type="text" id="lname" lname="lname"><br><br> -->
+        <input type="submit" id = "red"value="Red"><br>
+        <input type="submit" id="blue" value="Blue"><br>
+        <button type="button" id="white" >Click Me white!</button><br>
+        <button type="button" id="purple" >Click Me purpla!</button><br>
+        <button type="button" id="surprise" >Surpris Me !</button><br>
+        <button type="button" id="dont" >Dont Surprise Me!</button>
+      </form>
+      <script>
+        const red_button = document.getElementById("red");
+        const blue_button = document.getElementById("blue");
+        const white_button = document.getElementById("white");
+        const purple_button = document.getElementById("purple");
+        const h1_element = document.getElementById("h1class");
+        const surprise_button = document.getElementById("surprise");
+        const dont_button = document.getElementById("dont");
+
+
+        red_button.addEventListener("click", function (e) {
+            console.log("redButton is clicked");
+            event.preventDefault();
+            red_button.style.backgroundColor = "red";
+            document.body.style.backgroundColor = "pink";
+        });
+
+        blue_button.addEventListener("click", function (e) {
+        
+            console.log("bluButton is clicked"); 
+            blue_button.style.backgroundColor = "blue";
+            document.body.style.backgroundColor = "yellow";
+            event.preventDefault();
+        });
+
+        white_button.addEventListener("click", function(e){
+            // take h1 tag and on click the id becomes class named twxtWhite
+            h1_element.setAttribute("class", "textWhite");
+
+        });
+
+        purple_button.addEventListener("click", function(e){
+            // take h1 tah and on click the id becomes class named textPurple
+            h1_element.setAttribute("class","textPurple")
+        });
+
+        surprise_button.addEventListener("click",function(e){
+            const para = document.createElement("p");
+            // 
+            para.innerHTML = "YOU surprised me.....YALAMA NGA OI! Ena chae !"
+            document.body.appendChild(para)
+        })
+
+        dont_button.addEventListener("click",function(e){
+            const para_value = document.querySelector("p");
+            para_value.remove();
+        });
+
+
+      </script>
+      <style>
+        .textWhite{
+            color: aqua;
+        }
+        .textPurple{
+            color: purple;
+        }
+      </style>
+</body>
+</html>
